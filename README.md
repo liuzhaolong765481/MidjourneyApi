@@ -9,7 +9,7 @@
 
 
 ### Usage method
-- first, if you don't have [ Rapid平台 ](https://rapidapi.com) account, please register、activation and login, 
+- first, if you don't have [ Rapid ](https://rapidapi.com) account, please register、activation and login, 
 - then go to [ Midjourney API](https://rapidapi.com/liuzhaolong765481/api/midjourney-best-experience) and subscribe to the basic free program and then you can use it to your work
 - If you have any questions, please contact me via email by 1552519081@qq.com
 
