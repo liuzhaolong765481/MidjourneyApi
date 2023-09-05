@@ -1,17 +1,16 @@
 # midjourneyApi
 
 #### 支持
-- Midjourney api Generate Image
-- Midjourney upsample、variation、etc
-
-- Mj api Generate Image
-- Mj upsample、variation、etc
+- Midjourney Api Generate Image
+- Midjourney upsample(U1 U2...)、variation(V1 V2...)、etc
+- Midjourney Api Describe Image
+- Midjourney Api Dlend Image
 
 
 ### Usage method
 - first, if you don't have [ Rapid ](https://rapidapi.com) account, please register、activation and login, 
 - then go to [ Midjourney API](https://rapidapi.com/liuzhaolong765481/api/midjourney-best-experience) and subscribe to the basic free program and then you can use it to your work
-- If you have any questions, please contact me via email by 1552519081@qq.com
+- If you have any questions, please contact me  in telegram https://t.me/voyagell
 
 ### PHP Demo
 ```
