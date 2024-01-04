@@ -8,40 +8,43 @@
 
 
 ### Usage method
-- first, if you don't have [ Rapid ](https://rapidapi.com) account, please register、activation and login, 
-- then go to [ Midjourney API](https://rapidapi.com/liuzhaolong765481/api/midjourney-best-experience) and subscribe to the basic free program and then you can use it to your work
+- first, register [ ttapi ](https://ttapi.io/register) account, 
+- then go to [ TTApi Center](https://ttapi.io/center) to get TT-API-KEY, and you can use the midjouney api doc:https://doc.mjapiapp.com/
 - If you have any questions, please contact me  in telegram https://t.me/voyagell
 
 ### PHP Demo
 ```
 <?php
 
-$curl = curl_init();
+$url = 'https://api.ttapi.io/midjourney/v1/imagine';
 
-curl_setopt_array($curl, [
-	CURLOPT_URL => "https://midjourney-best-experience.p.rapidapi.com/mj/generate-fast?prompt=a beautiful cat --ar 1920:1080&hook_url=https://www.google.com",
-	CURLOPT_RETURNTRANSFER => true,
-	CURLOPT_ENCODING => "",
-	CURLOPT_MAXREDIRS => 10,
-	CURLOPT_TIMEOUT => 30,
-	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	CURLOPT_CUSTOMREQUEST => "POST",
-	CURLOPT_HTTPHEADER => [
-		"X-RapidAPI-Host: midjourney-best-experience.p.rapidapi.com",
-		"X-RapidAPI-Key: your api key"
-	],
-]);
+$data = array(
+    'prompt' => 'a cat --ar 1:1',
+    'model' => 'fast',
+    'hookUrl' => ''
+);
 
-$response = curl_exec($curl);
-$err = curl_error($curl);
+$ch = curl_init($url);
 
-curl_close($curl);
+$dataString = json_encode($data);
 
-if ($err) {
-	echo "cURL Error #:" . $err;
-} else {
-	echo $response;
-}
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'TT-API-KEY: your_key'
+);
+
+$result = curl_exec($ch);
+
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+curl_close($ch);
+
+echo $httpCode;
+
+
 ```
 
 ### Python Demo
@@ -49,16 +52,21 @@ if ($err) {
 ```
 import requests
 
-url = "https://midjourney-best-experience.p.rapidapi.com/mj/generate-fast"
-
-querystring = {"prompt":"a beautiful cat --ar 1920:1080","hook_url":"https://www.google.com/"}
+endpoint = "https://api.ttapi.io/midjourney/v1/imagine"
 
 headers = {
-	"X-RapidAPI-Key": "your api key",
-	"X-RapidAPI-Host": "midjourney-best-experience.p.rapidapi.com"
+    "TT-API-KEY": your_key
 }
 
-response = requests.post(url, headers=headers, params=querystring)
+data = {
+    "prompt": "a cute cat",
+    "model": "fast",
+    "hookUrl": ""
+}
 
+response = requests.post(endpoint, headers=headers, json=data)
+
+print(response.status_code)
 print(response.json())
+
 ```
